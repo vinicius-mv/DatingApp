@@ -12,7 +12,10 @@
     <div *ngIf="registerMode" class="container">
         <div class="row justify-content-center">
             <div class="col-4">
-                <app-register [usersFromHomeComponent]="users"></app-register>
+                <app-register [usersFromHomeComponent]="users" (cancelRegister)="cancelRegisterMode($event)">
+                </app-register>
+                <!-- child component receiving data from the parent '[]' -->
+                <!-- child component sending data to the parent () -->
             </div>
         </div>
     </div>
