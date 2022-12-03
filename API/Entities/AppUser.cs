@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+using API.Converters;
 using API.Extensions;
 
 namespace API.Entities
@@ -12,6 +14,7 @@ namespace API.Entities
 
         public byte[] PasswordSalt { get; set; }
 
+        [JsonConverter(typeof(DateOnlyJsonConverter))]
         public DateOnly DateOfBirth { get; set; }
 
         public string KnowAs { get; set; }
@@ -26,7 +29,7 @@ namespace API.Entities
 
         public string LookingFor { get; set; }
 
-        public string Intrests { get; set; }
+        public string Interests { get; set; }
 
         public string City { get; set; }
 
