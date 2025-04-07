@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit } from '@angular/core';
 import { RegisterComponent } from "../register/register.component";
 import { HttpClient } from '@angular/common/http';
 
@@ -27,5 +27,10 @@ export class HomeComponent implements OnInit {
       error: error => console.log(error),
       complete: () => console.log('request has completed')
     });
+  }
+
+  // convoluted example of how to use output property
+  cancelRegisterMode(event: boolean) {
+    this.registerMode = event;
   }
 }

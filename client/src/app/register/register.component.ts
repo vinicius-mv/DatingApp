@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,10 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
+  // @Input() usersFromHomeComponent: any; // old way to receive data (no compiler warning)
   usersFromHomeComponent = input.required<any>();
+  // @Output() cancelRegister = new EventEmitter(); // old way to send data (no compiler warning)
+  cancelRegister = output<boolean>();
 
   model: any = {};
 
@@ -18,5 +21,6 @@ export class RegisterComponent {
 
   cancel() {
     console.log('cancelled');
+    this.cancelRegister.emit(false);
   }
 }
