@@ -2,6 +2,7 @@ import { Component, inject, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import { User } from '../_models/users';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -11,6 +12,7 @@ import { User } from '../_models/users';
 })
 export class RegisterComponent {
   private accountService = inject(AccountService);
+  private toastr = inject(ToastrService);
   // @Input() usersFromHomeComponent: any; // old way to receive data (no compiler warning)
   usersFromHomeComponent = input.required<any>();
   // @Output() cancelRegister = new EventEmitter(); // old way to send data (no compiler warning)
@@ -25,7 +27,7 @@ export class RegisterComponent {
         console.log(response);
         this.cancel();
       },
-      error: err => console.log(err)
+      error: err => this.toastr.error(err.error)
     });
   }
 
