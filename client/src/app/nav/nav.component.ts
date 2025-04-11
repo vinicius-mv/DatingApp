@@ -4,13 +4,15 @@ import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nav',
   imports: [
     FormsModule,
     BsDropdownModule,
-    RouterModule
+    RouterModule,
+    CommonModule
   ],
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
