@@ -486,3 +486,5 @@ API/dating.db
 API/appsettings.json
 client/ssl/*.pem
 client/ssl/*.pem
+API/dating.db-shm
+API/dating.db-wal
