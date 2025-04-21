@@ -16,18 +16,18 @@ public class UsersController(IUserRepository userRepository) : BaseApiController
     [HttpGet]
     public async Task<ActionResult<IEnumerable<AppUser>>> GetUsers()
     {
-        var users = await userRepository.GetUsersAsync();
+        var members = await userRepository.GetMembersAsync();
 
-        return Ok(users.Adapt<IEnumerable<MemberDto>>());
+        return Ok(members);
     }
 
     [HttpGet("{username}")]
     public async Task<ActionResult<MemberDto>> GetUser(string username)
     {
-        var user = await userRepository.GetUserByUsernameAsync(username);
+        var member = await userRepository.GetMemberByUsernameAsync(username);
 
-        if (user == null) return NotFound();
+        if (member == null) return NotFound();
 
-        return user.Adapt<MemberDto>();
+        return member;
     }
 }
