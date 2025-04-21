@@ -1,6 +1,9 @@
 using API.Data;
 using API.Extensions;
+using API.Helpers;
 using API.Middleware;
+using Mapster;
+using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplicationServices(builder.Configuration);
 
 builder.Services.AddIdentityServices(builder.Configuration);
+
+// Register Mapster configuration
+builder.Services.AddSingleton(TypeAdapterConfig.GlobalSettings);
+builder.Services.AddScoped<IMapper, ServiceMapper>();
+MapsterProfile.RegisterMappings();
 
 var app = builder.Build();
 
