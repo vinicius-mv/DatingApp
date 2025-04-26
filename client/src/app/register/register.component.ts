@@ -14,7 +14,6 @@ export class RegisterComponent {
   private accountService = inject(AccountService);
   private toastr = inject(ToastrService);
   // @Input() usersFromHomeComponent: any; // old way to receive data (no compiler warning)
-  usersFromHomeComponent = input.required<any>();
   // @Output() cancelRegister = new EventEmitter(); // old way to send data (no compiler warning)
   cancelRegister = output<boolean>();
 
