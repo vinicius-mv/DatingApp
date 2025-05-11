@@ -49,18 +49,16 @@
                 </div>
             </tab>
 
-            <tab heading="Photos">
-                <div>
-                    <h4>Photos</h4>
-                    <p>Photos will go here</p>
-                </div>
+            <tab heading="Photos" #photoTab="tab">
+                @if (photoTab.active){
+                <gallery [items]="images" class="gallery">
+                </gallery>
+                }
+
             </tab>
 
             <tab heading="Messages">
-                <div>
-                    <h4>Messages</h4>
-                    <p>Messages will go here</p>
-                </div>
+                <p>Messages will go here</p>
             </tab>
         </tabset>
     </div>
