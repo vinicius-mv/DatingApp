@@ -1,12 +1,10 @@
-using API.Data;
+using System.Security.Claims;
 using API.DTOs;
 using API.Entities;
 using API.Interfaces;
 using Mapster;
-using MapsterMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
@@ -29,5 +27,23 @@ public class UsersController(IUserRepository userRepository) : BaseApiController
         if (member == null) return NotFound();
 
         return member;
+    }
+
+    [HttpPut]
+    public async Task<ActionResult> UpdateUser(MemberUpdateDto memberUpdateDto)
+    {
+        var username = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        if (username == null) return BadRequest("No username found in token");
+
+        var user = await userRepository.GetUserByUsernameAsync(username);
+
+        if (user == null) return BadRequest("Could not find user");
+
+        memberUpdateDto.Adapt(user);
+
+        if (await userRepository.SaveAllAsync()) return NoContent();
+
+        return BadRequest("Failed to update the user");
     }
 }

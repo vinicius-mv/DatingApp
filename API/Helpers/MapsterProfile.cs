@@ -18,5 +18,8 @@ public class MapsterProfile
 
         TypeAdapterConfig<Photo, PhotoDto>.NewConfig()
             .CompileProjection();
+
+        TypeAdapterConfig<MemberUpdateDto, AppUser>.NewConfig()
+            .CompileProjection();
     }
 }
