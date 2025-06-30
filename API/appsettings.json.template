@@ -1,0 +1,18 @@
+{
+    "Logging": {
+        "LogLevel": {
+            "Default": "Information",
+            "Microsoft.AspNetCore": "Information"
+        }
+    },
+    "ConnectionStrings": {
+        "DefaultConnection": "Data source=dating.db // for now, we will move to real database later..."
+    },
+    "TokenKey": "your token encryption secret...",
+    "CloudinarySettings": {
+        "CloudName": "cloudinary settings...",
+        "ApiKey": "cloudinary settings...",
+        "ApiSecret": "cloudinary settings..."
+    },
+    "AllowedHosts": "*"
+}
